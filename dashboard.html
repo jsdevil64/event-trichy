@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Dashboard - Event Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Event Hub</a>
+    <button id="logoutBtn" class="ghost-btn">Logout</button>
+  </header>
+  <main class="container narrow">
+    <section class="page-heading">
+      <div><span class="eyebrow">Provider Dashboard</span><h1>My Card</h1></div>
+    </section>
+    <div id="dashboardStatus" class="status">Loading...</div>
+    <section id="providerPanel" class="dashboard-card hidden">
+      <div class="card-preview">
+        <div class="service-icon" id="serviceIcon">🎈</div>
+        <div>
+          <h2 id="previewBrand"></h2>
+          <p id="previewLocation"></p>
+        </div>
+      </div>
+      <p><strong>Category:</strong> <span id="previewCategory"></span></p>
+      <p><strong>Phone:</strong> <span id="previewPhone"></span></p>
+      <p class="muted">Video link: Admin only</p>
+      <button id="editBtn" class="primary-btn">Edit Card</button>
+      <button id="deleteBtn" class="danger-btn">Delete Card</button>
+    </section>
+
+
+    <section id="leadsPanel" class="dashboard-card">
+      <div class="calendar-head"><div><span class="eyebrow">Customer Leads</span><h2>My Enquiries</h2></div></div>
+      <p class="muted">Event Hub மூலம் வந்த customer enquiries இங்கே வரும். Booking confirm ஆகி payment complete ஆன பிறகு amount enter செய்து <b>Booking Confirmed</b> அழுத்துங்கள்.</p>
+      <div id="providerLeads" class="admin-list"><div class="status">Loading enquiries...</div></div>
+      <p id="leadDashboardMessage" class="form-message"></p>
+    </section>
+
+    <section id="calendarPanel" class="dashboard-card">
+      <div class="calendar-head">
+        <div><span class="eyebrow">Availability</span><h2>My Work Calendar</h2></div>
+        <div class="calendar-nav"><button id="prevMonth" class="ghost-btn" type="button">←</button><strong id="calendarTitle"></strong><button id="nextMonth" class="ghost-btn" type="button">→</button></div>
+      </div>
+      <p class="muted">உங்களுக்கு வேலை இருக்கும் dates-ஐ click செய்து <strong>Work</strong> ஆக mark செய்யுங்கள். மீண்டும் click செய்தால் remove ஆகும்.</p>
+      <div id="availabilityCalendar" class="availability-calendar"></div>
+      <div class="calendar-legend"><span><i class="legend-dot free"></i> Free</span><span><i class="legend-dot busy"></i> Work booked</span></div>
+      <button id="saveDatesBtn" class="primary-btn" type="button">Save Work Dates</button>
+      <p id="calendarMessage" class="form-message"></p>
+    </section>
+
+    <section id="editPanel" class="dashboard-card hidden">
+      <h2>Edit Card</h2>
+      <form id="editForm">
+        <label>Brand Name<input id="editBrandName" required maxlength="100"></label>
+        <label>Name<input id="editName" required maxlength="80"></label>
+        <label>Phone Number<input id="editPhone" required inputmode="tel" maxlength="15"></label>
+        <label>Location<input id="editLocation" required maxlength="120"></label>
+        <button class="primary-btn" type="submit">Update</button>
+        <button id="cancelEdit" class="ghost-btn" type="button">Cancel</button>
+      </form>
+      <p id="editMessage" class="form-message"></p>
+    </section>
+  </main>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Login - Event Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Event Hub</a>
+  </header>
+  <main class="auth-wrap">
+    <section class="auth-card">
+      <span class="eyebrow">Provider</span>
+      <h1>Login</h1>
+      <form id="loginForm">
+        <label>Phone Number<input id="phone" required inputmode="tel" autocomplete="tel"></label>
+        <label>Password<div class="password-wrap"><input id="password" type="password" required autocomplete="current-password"><button class="eye-btn" type="button" data-target="password" aria-label="Show password">👁️</button></div></label>
+        <button class="primary-btn" type="submit">Login</button>
+      </form>
+      <p id="message" class="form-message"></p>
+      <p class="auth-switch">New provider? <a href="register.html">Register</a></p>
+    </section>
+  </main>
+  <script type="module" src="js/login.js"></script>
+  <script src="js/password-eye.js"></script>
+</body>
+</html>

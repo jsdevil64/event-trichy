@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Event Hub</a>
+    <div class="header-actions">
+      <a class="back-link" href="index.html">← Categories</a>
+      <a class="login-link" href="login.html">Login</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-heading">
+      <div>
+        <span class="eyebrow">Event Hub</span>
+        <h1 id="categoryTitle">Services</h1>
+        <p id="categoryDescription"></p>
+      </div>
+    </section>
+
+    <div class="search-tools">
+      <div class="search-box">
+        <span>🔍</span>
+        <input id="searchInput" type="search" placeholder="Search by name or location...">
+      </div>
+      <div class="date-filter">
+        <label>Event Date
+          <input id="eventDate" type="date">
+        </label>
+        <button id="clearDate" class="ghost-btn" type="button">Clear Date</button>
+      </div>
+    </div>
+    <p id="availabilityInfo" class="availability-info hidden"></p>
+
+    <div id="status" class="status">Loading...</div>
+    <section id="cardsGrid" class="cards-grid"></section>
+  </main>
+
+  <div id="videoModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal>×</button>
+      <h3 id="videoTitle">Video</h3>
+      <div id="videoContainer" class="video-container"></div>
+    </div>
+  </div>
+
+  <div id="leadModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-lead></div>
+    <div class="modal-card form-card">
+      <button class="modal-close" data-close-lead>×</button>
+      <h3>Contact this service provider</h3>
+      <p class="muted">Enter your details. The selected provider may contact you about your enquiry.</p>
+      <form id="leadForm">
+        <label>Your Name<input id="customerName" required maxlength="80" autocomplete="name"></label>
+        <label>Phone Number<input id="customerPhone" required inputmode="tel" maxlength="15" autocomplete="tel"></label>
+        <button class="primary-btn" type="submit">Submit Enquiry</button>
+      </form>
+      <div id="leadResult" class="form-message"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/category.js"></script>
+</body>
+</html>

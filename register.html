@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Registration - Event Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Event Hub</a>
+  </header>
+  <main class="auth-wrap">
+    <section class="auth-card wide">
+      <span class="eyebrow">Provider</span>
+      <h1>Register your service</h1>
+      <form id="registerForm">
+        <label>Category
+          <select id="category" required>
+            <option value="">Select category</option>
+            <option value="decoration">Decoration</option>
+            <option value="photography">Photography</option>
+            <option value="catering">Catering</option>
+            <option value="mahal">Mahal</option>
+          </select>
+        </label>
+        <label>Brand Name<input id="brandName" required maxlength="100"></label>
+        <label>Your Name<input id="name" required maxlength="80" autocomplete="name"></label>
+        <label>Phone Number<input id="phone" required inputmode="tel" maxlength="15" autocomplete="tel"></label>
+        <label>Location<input id="location" required maxlength="120" placeholder="e.g. Madurai"></label>
+        <label>Password<div class="password-wrap"><input id="password" type="password" required minlength="6" autocomplete="new-password"><button class="eye-btn" type="button" data-target="password" aria-label="Show password">👁️</button></div></label>
+        <p class="notice">Video link is added only by the Event Hub admin after registration.</p>
+        <button class="primary-btn" type="submit">Register</button>
+      </form>
+      <p id="message" class="form-message"></p>
+      <p class="auth-switch">Already registered? <a href="login.html">Login</a></p>
+    </section>
+  </main>
+  <script type="module" src="js/register.js"></script>
+  <script src="js/password-eye.js"></script>
+</body>
+</html>

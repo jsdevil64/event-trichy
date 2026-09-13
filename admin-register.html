@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Admin Register | Event Hub</title><link rel="stylesheet" href="css/style.css">
+<style>
+.password-wrap { position: relative; }
+.password-wrap input { width: 100%; padding-right: 48px; }
+.eye-btn {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  border: 0; background: transparent; cursor: pointer; padding: 8px;
+  font-size: 18px; line-height: 1; opacity: .7;
+}
+.eye-btn:hover { opacity: 1; }
+</style>
+</head><body><main class="auth-page"><section class="auth-card"><div class="brand">Event Hub</div><h1>Admin Registration</h1><p class="muted">Create the owner admin account for this website.</p><form id="adminRegisterForm" class="form-grid"><label>Phone Number<input id="adminPhone" type="tel" inputmode="numeric" maxlength="10" required></label><label>Password<div class="password-wrap"><input id="adminPassword" type="password" required><button class="eye-btn" type="button" data-target="adminPassword" aria-label="Show password">👁️</button></div></label><label>Confirm Password<div class="password-wrap"><input id="adminConfirmPassword" type="password" required><button class="eye-btn" type="button" data-target="adminConfirmPassword" aria-label="Show password">👁️</button></div></label><label>Admin Registration Key<div class="password-wrap"><input id="adminKey" type="password" required><button class="eye-btn" type="button" data-target="adminKey" aria-label="Show key">👁️</button></div></label><button class="btn btn-primary" type="submit">Create Admin Account</button></form><p id="adminRegisterMessage" class="form-message"></p><p class="auth-footer"><a href="admin.html">Back to Admin Login</a></p></section></main><script type="module" src="js/admin-register.js"></script>
+
+<script src="js/password-eye.js"></script></body></html>

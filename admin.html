@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Event Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Event Hub Admin</a>
+    <button id="adminLogout" class="ghost-btn hidden">Logout</button>
+  </header>
+
+  <main class="container">
+    <section id="adminLoginSection" class="auth-card admin-login">
+      <span class="eyebrow">Private</span>
+      <h1>Admin Login</h1>
+      <p class="muted">Use your approved Firebase admin account.</p>
+      <form id="adminLoginForm">
+        <label>Phone Number<input id="adminPhone" required inputmode="tel"></label>
+        <label>Password<div class="password-wrap"><input id="adminPassword" type="password" required><button class="eye-btn" type="button" data-target="adminPassword" aria-label="Show password">👁️</button></div></label>
+        <button class="primary-btn" type="submit">Admin Login</button>
+      </form>
+      <p id="adminMessage" class="form-message"></p>
+    </section>
+
+    <section id="adminPanel" class="hidden">
+      <div class="page-heading">
+        <div><span class="eyebrow">Control Panel</span><h1>Provider Management</h1></div>
+      </div>
+
+      <div class="notice">Provider ID use panni exact card-ஐ search செய்து edit, delete, video link add/edit செய்யலாம்.</div>
+
+      <section class="admin-search-card">
+        <label for="providerIdSearch"><b>Search Provider Card by ID</b></label>
+        <div class="admin-search-row">
+          <input id="providerIdSearch" type="text" placeholder="Paste Provider ID here" autocomplete="off">
+          <button id="providerSearchBtn" class="primary-btn" type="button">Search</button>
+          <button id="providerClearBtn" class="ghost-btn" type="button">Clear</button>
+        </div>
+        <p id="adminSearchMessage" class="form-message"></p>
+      </section>
+
+      <section class="admin-search-card">
+        <h2>Customer Leads / Bookings</h2>
+        <p class="muted">Customer details, booking status, booking amount, 3% commission and admin notes.</p>
+        <div id="adminLeads" class="admin-list"><div class="status">Loading leads...</div></div>
+      </section>
+
+      <div id="adminStatus" class="status">Loading providers...</div>
+      <div id="adminCards" class="admin-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+  <script src="js/password-eye.js"></script>
+  <p class="auth-footer"><a href="admin-register.html">Create Admin Account</a></p>
+</body>
+</html>

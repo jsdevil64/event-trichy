@@ -1,0 +1,70 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        && get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.active == true;
+    }
+
+    match /providers/{providerId} {
+      // Public category pages can read active cards.
+      allow read: if resource.data.active == true || isAdmin();
+
+      // A provider can create their own card.
+      allow create: if signedIn()
+        && request.auth.uid == providerId
+        && request.resource.data.providerId == providerId;
+
+      // Provider may edit normal profile fields, but videoLink can only be
+      // written by an admin.
+      allow update: if isAdmin() || (
+        signedIn()
+        && request.auth.uid == providerId
+        && request.resource.data.videoLink == resource.data.videoLink
+        && request.resource.data.providerId == resource.data.providerId
+      );
+
+      allow delete: if isAdmin() || (signedIn() && request.auth.uid == providerId);
+    }
+
+    match /leads/{leadId} {
+      // Customers can submit an enquiry without an account.
+      allow create: if request.resource.data.customerName is string
+        && request.resource.data.customerName.size() >= 1
+        && request.resource.data.customerPhone is string
+        && request.resource.data.customerPhone.size() >= 10
+        && request.resource.data.providerId is string;
+
+      // Provider can read/update leads that belong to their own provider ID.
+      allow read: if isAdmin() || (signedIn() && resource.data.providerId == request.auth.uid);
+      allow update: if isAdmin() || (signedIn() && resource.data.providerId == request.auth.uid
+        && request.resource.data.providerId == resource.data.providerId
+        && request.resource.data.customerName == resource.data.customerName
+        && request.resource.data.customerPhone == resource.data.customerPhone);
+      allow delete: if isAdmin();
+    }
+
+    match /admins/{adminId} {
+      // Admin can read their own profile.
+      allow read: if signedIn() && request.auth.uid == adminId;
+
+      // One-time bootstrap for the site's owner admin account. The phone is
+      // intentionally fixed here so random signed-in users cannot promote
+      // themselves to admin. For multiple admins, use a server-side admin
+      // provisioning flow instead of opening this rule more broadly.
+      allow create: if signedIn()
+        && request.auth.uid == adminId
+        && request.resource.data.active == true
+        && request.resource.data.phone == "8939717405";
+
+      allow update, delete: if false;
+    }
+  }
+}
