@@ -72,7 +72,7 @@ document.querySelector("#leadForm").addEventListener("submit",async e=>{
       eventDate:eventDate.value||"",createdAt:serverTimestamp(),status:"new",
       commissionRate:3,bookingAmount:0,commissionAmount:0,commissionPaid:false,adminNote:""
     });
-    const terms="Event Hub மூலமாக உங்களுக்கு customer-ஐ connect பண்ணுகிறேன். நான் அனுப்பிய customer-கிட்ட booking confirm ஆகி payment complete ஆனால், அந்த booking amount-ல 3% commission-ஐ Event Hub-க்கு நீங்கள் வழங்க வேண்டும். Booking confirm ஆனதும் உங்கள் Provider Dashboard-ல் Booking Confirmed button click செய்து booking amount update செய்யவும்.";
+    const terms="";
     const text=`Event Hub - New Customer Enquiry\nProvider ID: ${p.id}\nCustomer Name: ${customerName}\nCustomer Phone: ${customerPhone}\nEvent Date: ${eventDate.value||"Not selected"}\n\n${terms}`;
     const businessPhone=String(p.phone||"").replace(/\D/g,"");
     const waPhone=businessPhone.length>=10?(businessPhone.startsWith("91")?businessPhone:"91"+businessPhone):"";
